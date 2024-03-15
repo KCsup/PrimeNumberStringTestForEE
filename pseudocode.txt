@@ -1,0 +1,21 @@
+function getPrimeString(n: integer):
+	list<integer> primeStore = [2]
+	string primeConcat = "2"
+
+	for(integer i in 0 to n+5):
+		integer nextPrime = primeStore[i] + 1
+
+		boolean primeFound = false
+		while(not primeFound):
+			for(integer c in 2 to nextPrime):
+				if(nextPrime % c == 0):
+					nextPrime += 1
+					break
+				else if(c == nextPrime - 1):
+					primeFound = true
+					break
+
+		primeStore.add(nextPrime)
+		primeConcat += nextPrime
+
+	return primeConcat.concat(n, n+5)
